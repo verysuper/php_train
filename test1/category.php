@@ -30,8 +30,8 @@ class Category{
     }
  
 }
-?>
 
+/*
 -- Table structure for table `products`
 CREATE TABLE IF NOT EXISTS `products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -79,3 +79,5 @@ INSERT INTO `categories` (`id`, `name`, `created`, `modified`) VALUES
 (1, 'Fashion', '2014-06-01 00:35:07', '2014-05-30 17:34:33'),
 (2, 'Electronics', '2014-06-01 00:35:07', '2014-05-30 17:34:33'),
 (3, 'Motors', '2014-06-01 00:35:07', '2014-05-30 17:34:54');
+*/
+?>
