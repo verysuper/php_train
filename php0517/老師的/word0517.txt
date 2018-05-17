@@ -1,0 +1,7 @@
+以list_20180517_2.php傳送的陣列值
+自訂一個檔案接收
+接受後使用SQL語法UPDATE修TABLE zoo的資料
+
+可參考
+list_20180517_1.php
+update20180517.php
