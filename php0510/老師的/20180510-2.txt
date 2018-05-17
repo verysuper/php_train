@@ -1,0 +1,17 @@
+練習題
+開一個新檔20180510-2.php
+
+11:45後開這檔案會跳到http://tw.yahoo.com
+11:50後開這檔案會跳到http://www.google.com
+
+維護系統
+開一個新檔顯示現在正在維護 new_stop.php
+開一個新檔判斷目前是否正在維護 stop.php
+stop.php 設定時間變數，可以INCLUDE，也可以直接設定
+並判斷是否進入維護
+是的話跳頁到new_stop.php
+
+new_stop.php 設定時間變數，可以INCLUDE，也可以直接設定
+並判斷是否進入維護
+否的話跳頁到stop.php
+
