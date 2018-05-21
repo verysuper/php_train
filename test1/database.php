@@ -20,6 +20,7 @@ class Database{
                 $this->password);
         }catch(PDOException $exception){
             echo "Connection error: " . $exception->getMessage();
+            exit;
         }
   
         return $this->conn;
