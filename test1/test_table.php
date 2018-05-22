@@ -18,7 +18,7 @@
     //______________________________________________get object public proporty
     include_once("product.php");
     $Product = new Product($db);
-    // $col = get_object_vars($Product);
+    // var_dump(get_object_vars($Product)); //打印变量的相关信息
     echo "<table border='1'><tr>";
     foreach(get_object_vars($Product) as $key => $value){
         echo "<td>{$key}</td>";
