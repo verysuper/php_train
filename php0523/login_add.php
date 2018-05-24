@@ -3,15 +3,21 @@ include_once("head.php");
 if(!empty($_POST['my_id'])){
   $m_a_id = $_POST["my_id"];
   $m_a_pw = md5($_POST["my_password"]);
-  $m_a_work= $_POST["my_work"];
-  $sql = "insert into member_account value(NULL,'$m_a_id','$m_a_pw','$m_a_word',0,0,0,0)";
-  mysqli_query($link,$sql);
-
-  for($i=0;$i<count($_POST["my_level"]);$i++){
-    $sql = "update member_account set ".$_POST["my_level"][$i]." = '1' where m_a_id = '$m_a_id'";
-    mysqli_query($link,$sql);
-  }
+  $m_a_word= $_POST["my_work"];
   
+  $sql= "select * from member_account where m_a_id = '$m_a_id'";
+  $cc = mysqli_query($link,$sql);
+  $totle = mysqli_num_rows($cc);
+  if($totle == 0){
+    $sql = "insert into member_account value(NULL,'$m_a_id','$m_a_pw','$m_a_word',0,0,0,0)";
+    mysqli_query($link,$sql);
+    for($i=0;$i<count($_POST["my_level"]);$i++){
+      $sql = "update member_account set ".$_POST["my_level"][$i]." = '1' where m_a_id = '$m_a_id'";
+      mysqli_query($link,$sql);
+    }
+  }else{
+    echo "帳號已存在";
+  }  
 }
 ?>
 <form method="post">

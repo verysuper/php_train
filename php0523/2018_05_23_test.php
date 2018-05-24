@@ -3,14 +3,22 @@ include_once("head.php");
 if(!empty($_POST['my_id'])){
   $m_a_id = $_POST["my_id"];
   $m_a_pw = md5($_POST["my_password"]);
-  $m_a_work= $_POST["my_work"];
-  $sql = "insert into member_account value(NULL,'$m_a_id','$m_a_pw','$m_a_word',0,0,0,0)";
+  $m_a_word= $_POST["my_work"];
+  foreach($_POST["my_level"] as $a){
+    $a==1?$a1=1:$a1=0;
+    $a==2?$a2=1:$a2=0;
+    $a==3?$a3=1:$a3=0;
+    $a==4?$a4=1:$a4=0;
+  }
+
+  
+  $sql = "insert into member_account value(NULL,'$m_a_id','$m_a_pw','$m_a_word','$a1','$a2','$a3','$a4')";
   mysqli_query($link,$sql);
 
-  for($i=0;$i<count($_POST["my_level"]);$i++){
-    $sql = "update member_account set ".$_POST["my_level"][$i]." = '1' where m_a_id = '$m_a_id'";
-    mysqli_query($link,$sql);
-  }
+  // for($i=0;$i<count($_POST["my_level"]);$i++){
+  //   $sql = "update member_account set ".$_POST["my_level"][$i]." = '1' where m_a_id = '$m_a_id'";
+  //   mysqli_query($link,$sql);
+  // }
   
 }
 ?>
@@ -42,10 +50,10 @@ if(!empty($_POST['my_id'])){
   <tr>
     <td align="center" valign="middle">權限</td>
     <td align="center" valign="middle">
-      <input type="checkbox" name="my_level[]" value="m_a_1">帳號控制、
-      <input type="checkbox" name="my_level[]" value="m_a_2">最新消息控制、
-      <input type="checkbox" name="my_level[]" value="m_a_3">圖片控制、
-      <input type="checkbox" name="my_level[]" value="m_a_4">停權控制
+      <input type="checkbox" name="my_level[]" value="1">帳號控制、
+      <input type="checkbox" name="my_level[]" value="2">最新消息控制、
+      <input type="checkbox" name="my_level[]" value="3">圖片控制、
+      <input type="checkbox" name="my_level[]" value="4">停權控制
     </td>
   </tr>
   <tr>
