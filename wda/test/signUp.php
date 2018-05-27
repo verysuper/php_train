@@ -1,27 +1,9 @@
+
 <?php
-include_once("head.php");
-if(!empty($_POST['my_id'])){
-  $m_a_id = $_POST["my_id"];
-  $m_a_pw = md5($_POST["my_password"]);
-  $m_a_word= $_POST["my_work"];
-  
-  $sql= "select * from member_account where m_a_id = '$m_a_id'";
-  $cc = mysqli_query($link,$sql);
-  $totle = mysqli_num_rows($cc);
-  if($totle == 0){
-    $sql = "insert into member_account value(NULL,'$m_a_id','$m_a_pw','$m_a_word',0,0,0,0)";
-    mysqli_query($link,$sql);
-    //____________________________________________________這一段真的超智障
-    // for($i=0;$i<count($_POST["my_level"]);$i++){
-    //   $sql = "update member_account set ".$_POST["my_level"][$i]." = '1' where m_a_id = '$m_a_id'";
-    //   mysqli_query($link,$sql);
-    // }
-  }else{
-    echo "帳號已存在";
-  }  
-}
+  if (empty($_POST['my_id'])):
 ?>
-<form method="post">
+<form action=<?php echo $_SERVER['PHP_SELF'];// 將表單內容送給自己
+   ?> method="post">
 <table width="1024" border="1" align="center" cellpadding="0" cellspacing="0">
   <tr>
     <td width="368" align="center" valign="middle">帳號</td>
@@ -38,7 +20,7 @@ if(!empty($_POST['my_id'])){
   <tr>
     <td align="center" valign="middle">單位</td>
     <td align="center" valign="middle">
-      <select name="my_work">
+      <select name="my_unit">
         <option value="1">客服</option>
         <option value="2">營運</option>
         <option value="3">開發部</option>
@@ -49,10 +31,10 @@ if(!empty($_POST['my_id'])){
   <tr>
     <td align="center" valign="middle">權限</td>
     <td align="center" valign="middle">
-      <input type="checkbox" name="my_level[]" value="m_a_1">帳號控制、
-      <input type="checkbox" name="my_level[]" value="m_a_2">最新消息控制、
-      <input type="checkbox" name="my_level[]" value="m_a_3">圖片控制、
-      <input type="checkbox" name="my_level[]" value="m_a_4">停權控制
+      <input type="checkbox" name="my_level[]" value="a">帳號控制、
+      <input type="checkbox" name="my_level[]" value="b">最新消息控制、
+      <input type="checkbox" name="my_level[]" value="c">圖片控制、
+      <input type="checkbox" name="my_level[]" value="d">停權控制
     </td>
   </tr>
   <tr>
@@ -63,3 +45,54 @@ if(!empty($_POST['my_id'])){
   </tr>
 </table>
 </form>
+
+<?php
+  else:
+    try{
+      include_once("head.php");
+      $id=htmlspecialchars(strip_tags($_POST['my_id']));
+  
+      $sql="SELECT EXISTS (select * from account where id = '$id')";
+      $stmt = $con->prepare($sql);
+      $stmt->execute();
+      $result = $stmt->fetch();
+      if($result[0]<1)
+      {
+        //$pw = md5($_POST["my_password"]); //md5
+        //$unit= $_POST["my_unit"];
+        $a1=0;
+        $a2=0;
+        $a3=0;
+        $a4=0;
+        foreach($_POST["my_level"] as $a){
+          if($a=='a')$a1=1;
+          if($a=='b')$a2=1;
+          if($a=='c')$a3=1;
+          if($a=='d')$a4=1;
+        }
+        //echo "{$id},{$pw},{$unit},{$a1},{$a2},{$a3},{$a4}";
+        $sql = "INSERT INTO account
+                          SET seq='NULL', id=:id, pw=:pw, unit=:unit,
+                           a={$a1}, b={$a2}, c={$a3}, d={$a4}";
+        $stmt = $con->prepare($sql);
+        
+        $pw=md5(htmlspecialchars(strip_tags($_POST['my_password'])));
+        $unit=htmlspecialchars(strip_tags($_POST['my_unit']));
+        echo $sql;
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':pw', $pw);
+        $stmt->bindParam(':unit', $unit);
+
+        $stmt->execute();
+      }
+      else
+      {
+        echo "帳號已存在";
+      }
+    }
+    catch(PDOException $exception){
+      die('ERROR: ' . $exception->getMessage());
+    }
+  exit;
+  endif
+?>
