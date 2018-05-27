@@ -4,22 +4,21 @@ if(!empty($_POST['my_id'])){
   $m_a_id = $_POST["my_id"];
   $m_a_pw = md5($_POST["my_password"]);
   $m_a_word= $_POST["my_work"];
-  foreach($_POST["my_level"] as $a){
-    $a=="m_a_1"?$a1=1:$a1=0;
-    $a=="m_a_2"?$a2=1:$a2=0;
-    $a=="m_a_3"?$a3=1:$a3=0;
-    $a=="m_a_4"?$a4=1:$a4=0;
-  }
-
   
-  $sql = "insert into member_account value(NULL,'$m_a_id','$m_a_pw','$m_a_word','$a1','$a2','$a3','$a4')";
-  mysqli_query($link,$sql);
-
-  // for($i=0;$i<count($_POST["my_level"]);$i++){
-  //   $sql = "update member_account set ".$_POST["my_level"][$i]." = '1' where m_a_id = '$m_a_id'";
-  //   mysqli_query($link,$sql);
-  // }
-  
+  $sql= "select * from member_account where m_a_id = '$m_a_id'";
+  $cc = mysqli_query($link,$sql);
+  $totle = mysqli_num_rows($cc);
+  if($totle == 0){
+    $sql = "insert into member_account value(NULL,'$m_a_id','$m_a_pw','$m_a_word',0,0,0,0)";
+    mysqli_query($link,$sql);
+    //____________________________________________________這一段真的超智障
+    // for($i=0;$i<count($_POST["my_level"]);$i++){
+    //   $sql = "update member_account set ".$_POST["my_level"][$i]." = '1' where m_a_id = '$m_a_id'";
+    //   mysqli_query($link,$sql);
+    // }
+  }else{
+    echo "帳號已存在";
+  }  
 }
 ?>
 <form method="post">

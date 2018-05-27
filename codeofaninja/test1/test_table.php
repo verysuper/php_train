@@ -23,7 +23,16 @@
     //     echo "<td>{$key}</td>";
     // }            
     // echo "</tr></table>";
-
+    //__________________________________________________________test sql
+    $sql="SELECT EXISTS (SELECT * FROM categories WHERE name = 'Electroniacs')";
+    $stmt = $db->prepare($sql);
+    $stmt->execute();
+    $result = $stmt->fetch();
+    print($result[0]);//___________________________________ok
+    // $stmt->debugDumpParams();
+    // echo $stmt;
+    exit;
+    //__________________________________________________________
     $stmt = $db->prepare( "SELECT * FROM products" );
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
