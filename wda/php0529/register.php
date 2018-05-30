@@ -32,46 +32,45 @@
 </html>
 
 <?php
-    else:
-        try{
-            include_once("database.php");
-            $account=htmlspecialchars(strip_tags($_POST['account']));
-            $pw=htmlspecialchars(strip_tags($_POST['pw']));
-            $nick=htmlspecialchars(strip_tags($_POST['nick']));
-            //$sex=htmlspecialchars(strip_tags($_POST['sex']));
-            $sex=$_POST['sex'];
-            $sql="SELECT EXISTS (select * from member_05 where account = '$account')";
+else:
+    try{
+        include_once("database.php");
+        $account=htmlspecialchars(strip_tags($_POST['account']));
+        $pw=htmlspecialchars(strip_tags($_POST['pw']));
+        $nick=htmlspecialchars(strip_tags($_POST['nick']));
+        //$sex=htmlspecialchars(strip_tags($_POST['sex']));
+        $sex=$_POST['sex'];
+        $sql="SELECT EXISTS (select * from member_05 where account = '$account')";
+        $stmt = $con->prepare($sql);
+        $stmt->execute();
+        $result = $stmt->fetch();
+        //echo $result[0];
+        if($result[0]<1){
+            $sql = "insert into
+                    member_05 
+                    set
+                    seq=NUll,
+                    account=:account,
+                    password=:pw,
+                    nick=:nick,
+                    sex=:sex,
+                    created=:created";
             $stmt = $con->prepare($sql);
+            $stmt->bindParam(':account', $account);
+            $stmt->bindParam(':pw', $pw);
+            $stmt->bindParam(':nick', $nick);
+            $stmt->bindParam(':sex', $sex);
+            $stmt->bindParam(':created', $dateTime);
             $stmt->execute();
-            $result = $stmt->fetch();
-            //echo $result[0];
-            if($result[0]<1){
-                $sql = "insert into
-                        member_05 
-                        set
-                        seq=NUll,
-                        account=:account,
-                        password=:pw,
-                        nick=:nick,
-                        sex=:sex,
-                        created=:created";
-                $stmt = $con->prepare($sql);
-                $stmt->bindParam(':account', $account);
-                $stmt->bindParam(':pw', $pw);
-                $stmt->bindParam(':nick', $nick);
-                $stmt->bindParam(':sex', $sex);
-                $stmt->bindParam(':created', $dateTime);
-                $stmt->execute();
-                echo "帳號建立成功";
-            }
-            else{
-                echo "帳號已存在";
-            }
-
+            echo "帳號建立成功";
         }
-        catch(PDOException $ex){
-            die('ERROR: ' . $exception->getMessage());
+        else{
+            echo "帳號已存在";
         }
-    exit;
-    endif;
+    }
+    catch(PDOException $ex){
+        die('ERROR: ' . $exception->getMessage());
+    }
+exit;
+endif;
 ?>

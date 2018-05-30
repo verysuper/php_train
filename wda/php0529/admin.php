@@ -8,6 +8,13 @@
 </head>
 <body>
 <?php
+// echo "123";
+// exit();
+session_start();
+if( empty($_SESSION["uid"])){
+    header("location:signin.php");
+    exit();
+  }
 include_once("database.php");
 $sql="select * from member_05 where deleted=0";
 $stmt = $con->prepare($sql);
@@ -37,11 +44,12 @@ while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
         </td>";
     echo "</tr>";
 }
+echo $ip;
 endif;
 ?>
 <tr>
     <td colspan="5" align="center">
-        <input type='submit' value='修改'>
+        <input type='submit' value='修改'><a href="signout.php">登出</a>
     </td>
 </tr>
 </table>
