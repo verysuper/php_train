@@ -49,7 +49,9 @@ endif;
 ?>
 <tr>
     <td colspan="5" align="center">
-        <input type='submit' value='修改'><a href="signout.php">登出</a>
+        <input type='submit' value='修改'>
+        <a href="signout.php">登出</a>
+        <a href="admin.php">新增</a>
     </td>
 </tr>
 </table>

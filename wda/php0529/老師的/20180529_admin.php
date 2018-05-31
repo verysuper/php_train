@@ -27,7 +27,7 @@ $row = mysqli_fetch_assoc($ro);
 <?php }while($row = mysqli_fetch_assoc($ro));?>  
   <tr>
     <td colspan="5" align="center" valign="middle"><input type="submit" value="修改"> 
-      <a href="out.php">登出</a></td>
+      <a href="out.php">登出</a>　　　<a href="20180529_add.php">新增</a></td>
   </tr>
 </table>
 </form>

@@ -18,11 +18,15 @@
 </html>
 
 <?php
+
 include("database.php");
+$message = 0;
 if(isset($_POST["account"]))
 {
     $account = $_POST["account"];
     try{
+        if($ip_status != "")
+            throw new PDOException($ip_status);
         $sql = "select password from member_05 where account = ? and deleted = 0";
         $stmt = $con->prepare($sql);
         $stmt->bindParam(1, $account);
@@ -45,7 +49,35 @@ if(isset($_POST["account"]))
         }
     }
     catch(PDOException $ex){
-        die('ERROR: ' . $ex->getMessage());
+        $message = 1;
+        //die('ERROR: ' . $ex->getMessage());
+        echo 'ERROR: ' . $ex->getMessage() .'';
+    }
+    finally
+    {
+        $sql="insert into login_log value(
+            null,'{$account}','{$message}','{$ip}','{$dateTime}')";
+        $stmt = $con->prepare($sql);
+        $stmt->execute();
+        $time = date("Y-m-d H:i:s",strtotime("-10min"));
+        $sql = "select * from login_log 
+        where ll_ip = '{$ip}' and ll_time >='{$time}' order by ll_time desc limit 3";
+        $stmt = $con->prepare($sql);
+        $stmt->execute();
+        //$num = $stmt->rowCount();
+        $wrong_total = 0;
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            extract($row);
+            $wrong_total = $wrong_total + $ll_jo;
+        }
+        if($wrong_total==3)
+        {
+            $retime = date("Y-m-d H:i:s",strtotime("+10min"));
+            echo ",錯誤次數超過3次,封鎖ip";
+            $sql="insert into block_account value(null,'{$ip}','{$retime}',1)";
+            $stmt = $con->prepare($sql);
+            $stmt->execute();
+        }
     }
 }
 ?>
