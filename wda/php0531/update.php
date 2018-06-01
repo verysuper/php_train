@@ -7,26 +7,28 @@
     <title>Document</title>
 </head>
 <?php
-    // include("database.php");
-    // $id=$_GET['id'];
-    // $aql="select * from news where seq = '{$id}'";
+    include("database.php");
+    $id=$_GET["id"];
+    $sql="select * from news where seq = '{$id}'";    
     // $stmt=$conn->prepare($sql);
     // $stmt->execute();
     // $row=$stmt->fecth();
+    $stmt=$conn->query($sql);
+    foreach($stmt as $row)
 echo
 "<body>
     <table border='1'>
         <tr>
             <td>標題</td>
-            <td></td>
+            <td>".$row["title"]."</td>
         </tr>
         <tr>
             <td>圖片</td>
-            <td></td>
+            <td><img src='images/{$row["image"]}' width='200'/></td>
         </tr>
         <tr>
             <td>內文</td>
-            <td></td>
+            <td>".$row["content"]."</td>
         </tr>
     </table>
 </body>";

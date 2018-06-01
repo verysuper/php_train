@@ -31,7 +31,7 @@ while($row=$stmt->fetch(PDO::FETCH_ASSOC)){
     echo "<td>{$time}</td>";
     echo "<td>{$creater}</td>";
     echo "<td>{$close}</td>";
-    echo "<td><a href='update.php/?id={$seq}'>修改</a></td>";
+    echo "<td><a href='update.php?id={$seq}'>修改</a></td>";
     echo "</tr>";
 }
 ?>
