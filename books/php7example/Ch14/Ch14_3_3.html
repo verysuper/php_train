@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>Ch14_3_3.html</title>
+<style type="text/css">
+.blue { color: blue; }
+.red { color: red; }
+.link { 
+   font-size: 10pt;
+   color: blue;
+   text-decoration: underline;
+}
+</style>
+<script src="jquery-2.2.0.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function() {
+   $("h2").addClass("red");
+   $("#list").addClass("red");
+   $("#list li:last").addClass("blue");
+   $("p").addClass("link");
+   $("#list").find("li").each(function(i) {
+      $(this).append("(" + i + ")");
+   });
+   $("h2").click(function() { 
+      alert("jQuery的事件處理");     
+   });
+   $("p").click(function() {
+      $("h2").fadeOut("slow");
+   });
+});
+</script>
+</head>
+<body>
+<h2>建立jQuery程式</h2>
+<p>隱藏標題(動畫效果)</p>
+<ol id="list">
+  <li>Java Applet
+  <li>JavaScript
+  <li>VBScript
+  <li>DHTML 
+</ol>
+</body>
+</html>

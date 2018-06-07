@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ch15_1_2.html</title>
+<link rel="stylesheet" href="jquery.mobile-1.4.5.min.css">
+<script src="jquery-2.2.0.min.js"></script>
+<script src="jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+<div data-role="page" id="home">
+  <div data-role="header">
+    <h1>Ch15_1_2</h1>
+    <div data-role="navbar">
+       <ul>
+          <li><a href="#" data-icon="home">首頁</a></li>
+          <li><a href="#" data-icon="search">搜尋</a></li>
+          <li><a href="#" data-icon="info">關於</a></li>
+       </ul>
+    </div>
+  </div>
+  <div data-role="main" class="ui-content">
+    <ul data-role="listview" data-inset="true">
+      <li>HTML5</li>
+      <li>CSS3</li>
+      <li>JavaScript</li>
+      <li>jQuery</li>
+    </ul>
+    <p><a href="#about">關於本書</a></p>   
+    <p><a href="#book">關於本書(對話方塊)</a></p>
+  </div>
+  <div data-role="footer"><p>註腳列</p></div>
+</div>
+<div data-role="page" id="about">
+  <div data-role="header">
+    <h1>關於</h1>
+  </div>
+  <div data-role="main" class="ui-content">
+    <p>關於本書</p>
+    <a href="#" class="ui-btn">確定</a>
+  </div>
+</div>
+<div data-role="page" data-dialog="true" id="book">
+  <div data-role="header">關於</div>
+  <div data-role="main" class="ui-content">
+    <p>關於本書</p>
+    <a href="#" class="ui-btn">確定</a>
+  </div>
+</div>
+</body>
+</html>
