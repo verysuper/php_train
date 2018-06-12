@@ -4,23 +4,56 @@
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
   <meta name="generator" content="PSPad editor, www.pspad.com">
   <title></title>
+  <style>
+  #aa{
+    width:1024px;
+    height:500px;
+    background-color:#978;
+    background-repeat:no-repeat;
+    background-size:300px;
+    background-position:362px 0;
+    margin:auto;
+  }
+  </style>
   </head>
   <body>
-    <DIV id="aa" style="width:1024px;height:500px;background-color:#978;background-repeat:no-repeat;background-size:300px;background-position:362px 0; margin:auto;"></DIV><br>
+
     <input type="button" value="圖片1" onclick="pp(1);"> 
     <input type="button" value="圖片2" onclick="pp(2);"> 
     <input type="button" value="圖片3" onclick="pp(3);"> 
     <input type="button" value="開關1" onclick="op1();"> 
-    <input type="button" value="開關2" onclick="op2();"> 
+    <input type="button" value="開關2" onclick="op2();"><br> 
+    <div id="ax">
+      <DIV id="aa"></DIV>
+    </DIV>
   </body>
 </html>
 <script>
 function pp(ppic){
-  document.getElementById("aa").style.backgroundImage = "url(a0" + ppic + ".png)";
-  
+  //document.getElementById("aa").style.backgroundImage = "url(a0" + ppic + ".png)";
+  if(ppic == 1){document.getElementById("aa").style = "background-image:url(a01.png);background-color:#fff";}
+  if(ppic == 2){document.getElementById("aa").style = "background-image:url(a02.png);background-color:#f0f";}
+  if(ppic == 3){document.getElementById("aa").style = "background-image:url(a03.png);background-color:#ff0";}
 }
+var u1 =0;  //設定開關判斷用的變數
 function op1(){
+  if(u1 ==0 ){
+    u1 = 1;
+    document.getElementById("aa").style.display = "none";
+  }else{
+    u1 = 0;
+    document.getElementById("aa").style.display = "block";
+  }  //變數開與關的切換
 }
+var p2 =0; //設定開關判斷用的變數
 function op2(){
+  var my_div = '<DIV id="aa"></DIV>';
+  if(p2 ==0 ){
+    p2 = 1;
+    document.getElementById("ax").innerHTML= "";
+  }else{
+    p2 = 0;
+    document.getElementById("ax").innerHTML= my_div;
+  }  //變數開與關的切換
 }
 </script>
