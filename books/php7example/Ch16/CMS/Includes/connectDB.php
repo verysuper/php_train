@@ -3,7 +3,8 @@
     require_once ("Functions/database.php");
 
     // Create database connection
-    $databaseConnection = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+    //$databaseConnection = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);    
+    $databaseConnection = new mysqli('localhost', 'root', '', 'simplecms');
     if ($databaseConnection->connect_error)
     {
         die("Database selection failed: " . $databaseConnection->connect_error);
