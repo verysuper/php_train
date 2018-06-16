@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <style>
+		body {
+			font-family: Helvetica, Arial, sans-serif;
+/*			font-size:2em;*/
+		}
+		nav {
+			display:block;
+			width:100%;
+			background: #000;
+			line-height: 1.6em;
+			font-weight: 400;
+			width:100%;
+			text-align:center;
+			position: relative;
+		  	margin:0 auto;
+			font-size:2em;
+		}
+		nav ul {
+			list-style-type:none;
+			margin: 0 auto;
+			padding-left:0;
+			text-align:center;
+			width:100%;
+			position: absolute;
+			background: #000;
+		}
+		nav li {
+			display:inline-block;
+		}
+		nav li a {
+			display:block;
+			min-width:140px;
+			text-align: center;
+			font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+			color: #fff;
+		  	text-transform:uppercase;
+			background: #000;
+			text-decoration: none;
+/*			margin-left:-5px;*/
+			padding: 10px 0;  
+			-webkit-transition: all 0.4s ease 0s;
+			-moz-transition: all 0.4s ease 0s;
+			-ms-transition: all 0.4s ease 0s;
+			-o-transition: all 0.4s ease 0s;
+			transition: all 0.4s ease 0s;
+		}
+		nav li:hover a {
+			color: #4db3ff;
+			background-color:#ccddee;
+		}
+		nav li:hover ul a {
+			background: #f3f3f3;
+			color: #2f3036;
+			height: 40px;
+			line-height: 40px;
+		}
+		nav li:hover nav ul a:hover {
+			color: #4db3ff;
+		}
+		nav li ul {
+			display: none;
+		}
+		nav li ul li {
+			display: block;
+			float: none;
+		}
+		nav li ul li a {
+			width: auto;
+			min-width: 100px;
+			padding: 0 20px;
+		}
+		nav label {
+			text-decoration: none;
+			color: #fff;
+			background: #000;
+			text-align: center;
+			padding: 10px 15px;
+			display: none;
+			cursor: pointer;
+			text-transform: uppercase;
+		}
+		nav label span{
+		   padding-left: 35px;
+		}
+		nav input[type=checkbox]{
+			display: none;
+		}
+		nav input[type=checkbox]:checked ~ #menu{
+			display: block;
+		}
+		@media screen and (max-width : 800px){
+			
+			nav ul {
+				position: static;
+				display: none;
+			}
+			nav li {
+				margin-bottom: 1px;
+			}
+			nav ul li, nav li a {
+				width: 100%;
+			}
+			nav label {
+				display: flex;
+				justify-content: space-between;
+				align-items:center;
+			}
+		}
+    </style>
+</head>
+<body>
+    <nav>
+        <label for="show-menu">
+            <span><i class="fas fa-bars"></i></span>
+			<span>123</span>
+        </label>
+        <input type="checkbox" id="show-menu">
+        <ul id="menu">
+			<li><a href="#"><i class="fas fa-ambulance"></i></a></li>
+            <li><a href="#"><i class="fas fa-procedures"></i></a></li>
+            <li><a href="#"><i class="fas fa-syringe"></i></a></li>
+            <li><a href="#"><i class="fas fa-skull"></i></a></li>
+<!--            <li><a href="#"><i class="fas fa-sign-in-alt"></i></a></li>-->
+            <li><a href="#"><i class="fas fa-sign-out-alt"></i></a></li>
+        </ul>
+    </nav>
+</body>
+</html>

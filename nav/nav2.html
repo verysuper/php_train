@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="reset.css" type="text/css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
+    <style>
+		body{
+			
+		}
+        nav{
+            width: 100%;
+            background: #000;
+        }
+        .menu1{
+            display: flex;
+            justify-content: center;
+			align-items:center;
+        }
+		.menu1 a{
+			display: block;
+			width: 80px;
+			height: 44px;
+			text-align: center;
+			line-height: 44px;
+			font-size:2em;
+			color: #fff;
+		}
+		.menu2{
+			display: none;
+		}
+		@media screen and (max-width : 720px){
+			.menu1{
+				display: none;
+			}
+			.menu2{
+				display: flex;
+				justify-content: space-between;
+				align-items:center;
+        	}
+			.menu2 a{
+				display: block;
+				width: 80px;
+				height: 44px;
+				text-align: center;
+				line-height: 44px;
+				font-size:2em;
+				color: #fff;
+			}
+		}
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="menu1">
+            <li><a href="#"><i class="fas fa-home"></i></a></li>
+            <li><a href="#">002</a></li>
+            <li><a href="#">003</a></li>
+            <li><a href="#">004</a></li>
+            <li><a href="#">005</a></li>
+            <li><a href="#">006</a></li>
+            <li><a href="#">007</a></li>
+            <li><a href="#">008</a></li>
+            <li><a href="#"><i class="fas fa-sign-in-alt"></i></a></li>
+        </ul>
+		<ul class="menu2">
+            <li><a href="#"><i class="fas fa-home"></i></a></li>
+            <li><a href="#"><i class="fas fa-bars"></i></a></li>
+        </ul>
+    </nav>
+</body>
+</html>
