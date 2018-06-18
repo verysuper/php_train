@@ -94,6 +94,11 @@
                 where uid = '{$uid}' and pw = '{$pw}' LIMIT 1;";
         $stmt = mysqli_query($conn,$query)  or die(mysqli_error());
         if($stmt->num_rows==1){
+            $row=mysqli_fetch_assoc($stmt);
+            if($row['del']==1){
+                echo "<script>alert('帳號已上鎖,請隔壁幫你開鎖');</script>";
+                exit();
+            }
             $query = "insert into login_log 
                     values(null,'$uid',0,'$ip','$currentTime');"; //紀錄登入成功
             $stmt = mysqli_query($conn,$query) or die(mysqli_error());
