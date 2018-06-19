@@ -1,0 +1,56 @@
+@charset "utf-8";
+/* CSS Document */
+
+*{
+  margin:0;
+  padding:0;
+}
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size:16px;
+	background: #ccc;
+}
+/****************************/
+.mobile-menu {
+	background: #ff0;
+}
+.show-menu{
+	background: #0f0;
+}
+span{
+	background: #f0f;
+}
+.lines{/*div*/
+	background: #0ff;
+}
+/* ul{
+	background: #f00;
+}
+ul li{
+	background: #f0f;
+}
+ul li a {
+	background: #fff;
+} */
+/****************************/
+.mobile-menu {
+	display:block;
+	width:100%;
+	background: #8aa8bd/*e0b88f/*c99393/*e5d1a4/*dcc591/*EFD3A3*/;
+	line-height: 1.6em;
+	font-weight: 400;
+	text-align:center;
+	position: relative;
+	margin:0 auto;
+}
+/*Strip the ul of padding and list styling*/
+.mobile-menu ul {
+	list-style-type:none;
+  margin: 0 auto;
+  padding-left:0;
+  text-align:center;
+  width:100%;
+  position: absolute;
+  background: #8aa8bd;
+}
+

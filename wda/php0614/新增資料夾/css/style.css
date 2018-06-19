@@ -1,0 +1,50 @@
+@charset "utf-8";
+/* CSS Document */
+
+body {
+	font-family: Helvetica, Arial, sans-serif;
+	font-size:16px;
+	background: #ccc;
+}
+.mobile-menu {
+	display:block;
+	width:100%;
+	background: #8aa8bd/*e0b88f/*c99393/*e5d1a4/*dcc591/*EFD3A3*/;
+	line-height: 1.6em;
+	font-weight: 400;
+	text-align:center;
+	position: relative;
+	margin:0 auto;
+}
+/*Strip the ul of padding and list styling*/
+.mobile-menu ul {
+	list-style-type:none;
+	margin: 0;
+	padding: 0;
+	text-align:center;
+	width:100%;
+	position: absolute;
+	
+}
+/*Create a horizontal list with spacing*/
+.mobile-menu li {
+	/*display:inline-block;*/
+	/*float: left;
+	margin-right: 1px;*/
+	display: flex;
+	background: #f00;
+}
+/*Style for menu links*/
+.mobile-menu li a {
+	display:block;
+	min-width:140px;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #fff;
+	text-transform:uppercase;
+	/*background: #8aa8bd;*/
+	/*text-decoration: none;*/
+	/*margin-left:-5px;*/
+	margin: 0;
+	padding: 0;
+	transition: all 0.4s ease 0s;
+}
