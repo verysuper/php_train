@@ -11,16 +11,22 @@ if(!empty($_FILES["mypic"])){
     if(!empty($_FILES["mypic"]["name"][$i])){
       $now_files_name = $tt2.$i.".jpg";
       copy($_FILES["mypic"]["tmp_name"][$i],"xx/".$now_files_name); 
-      //echo $_FILES["mypic"]["name"][$i]."<br>";
-      
+      $sql="insert into m_pic value(null,'".$now_files_name."')";
+      mysqli_query($link,$sql);
     }
   }
 }
 ?>
 <form method="post" enctype="multipart/form-data">
-  <input type="button" value="新增" />　　<input type="submit" value="送出" /><br><br>
-  <input type="file" name="mypic[]"/><br><br>
-  <input type="file" name="mypic[]"/><br><br>
-  <input type="file" name="mypic[]"/><br><br>
-  <input type="file" name="mypic[]"/><br><br>
+  <input type="button" value="新增" onclick = "add_pic()"/>　　<input type="submit" value="送出" /><br><br>
+  <span id="aa"><input type="file" name="mypic[]"/><br><br></span>
 </form>
+
+
+
+<script>
+  function add_pic(){
+      var my_file = '<input type="file" name="mypic[]"/><br><br>' ;
+      document.getElementById("aa").innerHTML = document.getElementById("aa").innerHTML + my_file; 
+  }
+</script>

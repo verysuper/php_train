@@ -1,0 +1,32 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="PSPad editor, www.pspad.com">
+  <title></title>
+  <script src="jquery-3.3.1.min.js"></script>
+  </head>
+  <body>
+    <input type="password" id="pw2"><br><br>
+    <div style="width:64px;height:19px;padding: 5px;background-color:#bbb;" id="b1" onclick="up_pw();">顯示密碼</div><br><br>
+    <input type="password" id="pw1"><br><br>
+    <div style="width:64px;height:19px;padding: 5px;background-color:#bbb;" id="b2">顯示密碼</div>
+  </body>
+</html>
+<script>
+  var now_pw = 0 ;
+  function up_pw(){
+    if(now_pw == 0){
+      now_pw = 1
+      document.getElementById("b1").innerHTML = "隱藏密碼";
+      document.getElementById("pw2").type = "text";
+    }else{
+      now_pw = 0
+      document.getElementById("b1").innerHTML = "顯示密碼";
+      document.getElementById("pw2").type = "password";
+    }
+  }
+  $("#b2").click(function(){
+    $("#pw1").attr("type","text");
+  });
+</script>
