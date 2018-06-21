@@ -1,0 +1,35 @@
+<!DOCTYPE>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title></title>
+  <script src="jquery-3.3.1.min.js"></script>
+  </head>
+  <body>
+    <input id="aol">　
+    <input type="button" value="送出" onclick="cc()">
+    <div id="mming" style="width:100vw;height:100vh"></div>
+
+  </body>
+</html>
+<script>
+  function cc(){
+    ww = document.getElementById("aol").value;
+    $.post("ajax_api.php",{aol:"XXX",ao2:"OOO",ww},function(oo){
+      document.getElementById("mming").innerHTML = oo;
+    });
+    //    $.get("傳送目標API",{傳送的值},function(回傳值){ });
+    //    $.post("傳送目標API",{傳送的值},function(回傳值){ });
+  }
+  
+  /*
+  var dd = "03";
+  var a04 = "OOXX";
+  {
+    aol:"XXX",
+    ao2:"OOO",
+    a03:dd,
+    a04
+  }
+  */
+</script>

@@ -1,0 +1,91 @@
+body {
+    font-family: '微軟正黑體';
+}
+nav {
+    position: fixed; top: 0; right: 0; /*bottom: 0;*/ left: 0; margin: auto;
+    display:block;
+    width:100%;
+    background:rgba(0, 0, 0,0.5);
+    text-align:center;
+    margin:0 auto;
+    font-size:1.6em;
+    z-index: 1;
+}
+nav ul {
+    list-style-type:none;
+    margin: 0 auto;
+    padding-left:0;
+    text-align:center;
+    width:100%;
+    position: absolute;
+    background:rgba(0, 0, 0,0.5);
+}
+nav li {
+    display:inline-block;
+}
+nav li a {
+    display:block;
+    min-width:100px;
+    text-align: center;
+    color: #fff;
+    text-transform:uppercase;
+    /* background:rgba(0, 0, 0,0.5); */
+    text-decoration: none;
+    padding: 5px 0;
+    transition: all 0.4s ease 0s;
+}
+nav li a:hover {
+    color: #4db3ff;
+    background-color:#ccddee;
+}
+nav label {
+    text-decoration: none;
+    color: #fff;
+    background:rgba(0, 0, 0,0.5);
+    /* text-align: center; */
+    padding: 5px 15px;
+    display: none;
+    cursor: pointer;
+}
+nav input[type=checkbox]{
+    display: none;
+}
+nav input[type=checkbox]:checked ~ #menu{
+    display: block;
+}
+main{
+    display:block;
+    width: 100%;
+    margin:80px auto;
+}
+main table{
+    position: relative; 
+    top: 60px;
+}
+footer{
+    position: fixed; right: 0; bottom: 0; left: 0; margin: auto;
+    display:block;
+    width:100%;
+    background:rgba(0, 0, 0,0.8);
+    text-align:center;
+    margin:0 auto;
+    font-size:1.2em;
+    color: #fff;
+}
+@media screen and (max-width : 600px){			
+    nav ul {
+        position: static;
+        display: none;
+    }
+    nav li {
+        margin-bottom: 1px;
+    }
+    nav ul li, nav li a {
+        width: 100%;
+    }
+    nav label {
+        display: flex;
+        justify-content: space-between;
+        align-items:center;
+    }
+}

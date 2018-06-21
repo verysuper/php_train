@@ -1,0 +1,32 @@
+<!DOCTYPE>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title></title>
+  <script src="jquery-3.3.1.min.js"></script>
+  </head>
+  <body>
+    帳號 <input id="aol"><br><br>
+    密碼 <input id="ao2"><br><br>
+    <input type="button" value="送出" onclick="cc()">
+    <div id="mming" style="width:100vw;height:100vh"></div>
+
+  </body>
+</html>
+<script>
+  function cc(){
+    ww = document.getElementById("aol").value;
+    ww2 = document.getElementById("ao2").value;
+    $.post("ajax_api_2.php",{ww,ww2,vvvv:["vv1","vv2","vv3","vv4"]},function(oo){
+      o0 = eval( "(" + oo + ")" );
+      alert("帳號:" + o0.name);
+      alert("密碼:" + o0.pw);
+      alert("v1:" + o0.ii[0]);
+      alert("v2:" + o0.ii[1]);
+      alert("v3:" + o0.ii[2]);
+      alert("v4:" + o0.ii[3]);
+      
+      //document.getElementById("mming").innerHTML = oo;
+    });
+  }
+</script>
