@@ -22,9 +22,9 @@
         <input type="checkbox" id="show-menu">
         <ul id="menu">
             <li><a href="register.php" title="註冊"><i class="fas fa-ambulance"></i></a></li>
-            <li><a href="read.php" title="會員"><i class="fas fa-procedures"></i></a></li>
-            <!-- <li><a href="update.php" title="更新"><i class="fas fa-syringe"></i></a></li> -->
+            <li><a href="read.php" title="會員"><i class="fas fa-procedures"></i></a></li>            
             <li><a href="block_read.php" title="已刪除"><i class="fas fa-skull"></i></a></li>
+            <li><a href="MultiUpload.php" title="上傳檔案"><i class="fas fa-syringe"></i></a></li>
 <?php 
     if(empty($_SESSION["uid"]))
         echo "<li><a href='login.php' title='登入'><i class='fas fa-sign-in-alt'></i></a></li>";
