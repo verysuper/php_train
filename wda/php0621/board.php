@@ -1,8 +1,25 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<?php
+session_start();
+$tt = strtotime("+6hour");
+$tt2 = date("Y-m-d H:i:s",$tt);
+
+$link =mysqli_connect("localhost","root","","php2018_06");
+mysqli_query($link , 'SET NAMES UTF8'); 
+
+$id = "bz";
+if(empty($_SESSION["talk_no"])){
+  $tt3 = date("YmdHis",$tt);
+  $_SESSION["talk_no"] = $tt3;
+}
+if(!empty($_POST["my_talk"])){
+  $sql = "insert into board_log value (null,'".$id."','".$_POST["my_talk"]."','".$_SESSION["talk_no"]."','".$tt2."','127.0.0.1')";
+  mysqli_query($link , $sql);
+}
+?>
+<!DOCTYPE>
 <html>
   <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta name="generator" content="PSPad editor, www.pspad.com">
   <title></title>
   <script src="jquery-3.3.1.min.js"></script>
   <style>
@@ -16,6 +33,19 @@
     margin:0 auto;
     overflow:auto;
   }
+  #all_talk_back{
+    width:1024px;
+    height:500px;
+    background-image:url(load.gif);
+    
+    display:block;
+    background-size:50px 50px;
+    background-repeat:no-repeat;
+    background-position:center center;
+    position:fixed;
+    left:50%;
+    margin:0 0 0 -512px;    
+  }
   #intpu_talk{
     width:220px;
     height:25px;
@@ -24,10 +54,13 @@
   </style>
   </head>
   <body>
-  <div id="all_talk"></div>
-  <div id="intpu_talk">
-    <input id="my_talk">　<input type ="button" value="說話">
-  </div>
+    <div id="all_talk_back"></div>
+    <div id="all_talk"></div>
+  <form method="post">
+    <div id="intpu_talk">
+      <input name="my_talk">　<input type ="submit" value="說話">
+    </div>
+  </form>
   </body>
 </html>
 <!--
@@ -42,3 +75,14 @@
   2-3 頁面接收到回傳值後顯示在網頁上
 結束時清空session
 -->
+<SCRIPT>
+function no_load(){
+  $("#all_talk_back").hide();
+}
+function now_load(){
+  alert("YA");
+  setTimeout(function(){now_load();},2000)   //1000=1秒
+}
+//no_load();
+//now_load();
+</SCRIPT>

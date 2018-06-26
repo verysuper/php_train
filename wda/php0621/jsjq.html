@@ -1,13 +1,75 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-    <script src="jquery-3.3.1.min.js"></script>
-</head>
-<body>
-    
-</body>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title></title>
+  <script src="jquery-3.3.1.min.js"></script>
+  <style>
+    body{
+      margin:0px;
+    }
+    #a01{
+      width:500px;
+      height:200px;
+      background:#777;
+      overflow:auto;
+      margin:0 auto;
+    }
+    #a02{
+      width:500px;
+      height:2000px;
+      background:#ccc;
+    }
+    .cc{
+      width:500px;
+      height:120px;
+      margin:0 0 10px 0;
+    }
+    #c01{
+      background-color:#ffc5ff;
+    }
+    #c02{
+      background-color:#c5d2ff;
+    }
+    #c03{
+      background-color:#c5fffa;
+    }
+    #c04{
+      background-color:#fff0c5;
+    }
+    #c05{
+      background-color:#000;
+    }
+    .ccc{
+      width:50px;
+      height:50px;
+      display:inline-block;
+    }
+  </style>
+  </head>
+  <body id="zz">
+  <div id="a01">
+    <div id="a02">
+      <div id="c01" class="cc"></div>
+      <div id="c02" class="cc"></div>
+      <div id="c03" class="cc"></div>
+      <div id="c04" class="cc"></div>
+      <div id="c05" class="cc"></div>
+    </div>
+  </div>
+  <div class="ccc" id="c1">c01</div>
+  <div class="ccc" id="c2">c02</div>
+  <div class="ccc" id="c3">c03</div>
+  <div class="ccc" id="c4">c04</div>
+  <div class="ccc" id="c5">c05</div>
+  
+<a href="#c01">c01</a>　<a href="#c02">c02</a>　<a href="#c03">c03</a>　<a href="#c04">c04</a>　<a href="#c05">c05</a>　<a href="#zz">TOP</a>
+  </body>
 </html>
+<script>
+/*
+  $("#c1").click(function(){
+    $("#a02").animate({top:"500px"});
+  });
+*/
+</script>
