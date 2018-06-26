@@ -1,81 +1,50 @@
 <?php 
-    require_once("config.php");
+    include("_header.php");
 ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css">
-	<link rel="stylesheet" href="style.css" type="text/css">
-</head>
-<body>
-    <nav>
-        <label for="show-menu">
-            <span><i class="fas fa-bars"></i></span>
-			<span>
-                
-            </span>
-        </label>
-        <input type="checkbox" id="show-menu">
-        <ul id="menu">
-            <li><a href="register.php" title="註冊"><i class="fas fa-ambulance"></i></a></li>
-            <li><a href="read.php" title="會員"><i class="fas fa-procedures"></i></a></li>
-            <li><a href="update.php" title="更新"><i class="fas fa-syringe"></i></a></li>
-            <li><a href="block_read.php" title="已刪除"><i class="fas fa-skull"></i></a></li>
-<?php 
-    if(empty($_SESSION["uid"]))
-        echo "<li><a href='login.php' title='登入'><i class='fas fa-sign-in-alt'></i></a></li>";
-    else
-        echo "<li><a href='logout.php' title='登出'><i class='fas fa-sign-out-alt'></i></a></li>";
-?>
-        </ul>
-    </nav>
 <!-- _________________________________________________ -->
 	<main>
-        <form action="register.php" method="post" id="form1">
+        <form action="register.php" method="post" id="form1" enctype="multipart/form-data">
             <table align="center">
                 <caption><h1>註冊會員</h1></caption>
                 <tr>
-                    <td>帳號</td>
+                    <th>帳號</th>
                 </tr>
                 <tr>
                     <td><input type="text" name="uid" id="uid"></td>
                 </tr>
                 <tr>
-                    <td>密碼</td>
+                    <th>密碼</th>
                 </tr>
                 <tr>
                     <td><input type="text" name="pw" id="pw"></td>
                 </tr>
                 <tr>
-                    <td>Email</td>
+                    <th>Email</th>
                 </tr>
                 <tr>
                     <td><input type="text" name="email" id="email"></td>
                 </tr>
-                <tr>
-                    <td><input type="hidden" name="created" value="<?php echo $timeTaipei; ?>"></td>
+                <!-- <tr>
+                    <th>上傳相片</th>
                 </tr>
                 <tr>
+                    <td><input type="file" name="pic" id="pic" /></td>
+                </tr> -->
+                <tr>
                     <td>
-                        <p>&nbsp;</p>
+                        <hr>
                         <p><input type="submit" name="submit" value="註冊"><p>                        
                         <p><a href="login.php">登入</a></p>
                     </td>
                 </tr>
             </table>
+            <!-- <input name="MAX_FILE_SIZE" type="hidden" id="MAX_FILE_SIZE" value="2097152" /> -->
+            <input type="hidden" name="created" value="<?php echo $timeTaipei; ?>">
         </form>
     </main>
     <!-- _________________________________________________ -->
-	<footer>
-		這是頁尾
-    </footer>
-    </body>
-</html>
 <?php
+    include("_footer.php");
     if (isset($_POST['submit']))
     {
         if(empty($_POST['uid'])){
@@ -90,14 +59,23 @@
         // $row = mysqli_fetch_assoc($stmt);
         // print_r($row);
         if($stmt->num_rows==1){
-            echo "<script>alert('existed');</script>";
+            echo "<script>alert('account existed');</script>";
         }else{
             $query = "INSERT INTO user VALUES 
                     (NULL,'$uid','$pw','$email','$created','$created',0);";
             $stmt = mysqli_query($conn, $query) or die(mysqli_error());
-            echo "<script>alert('success');</script>";
-            header ("Location: login.php");
-            
+            // $pid=mysqli_insert_id($conn);
+            // $file = $_FILES["pic"];
+            // if(strrpos($file['name'],"png")==""){
+            //     header ("Location: register.php?msg=aaaaaaaaaaaaaaaaaa");    
+            // }
+            // else{
+            //     if(copy($file['tmp_name'],"images/$pid.png")){
+            //         unlink($file['tmp_name']);
+            //     }
+            // }
+
+            header ("Location: login.php?msg=register success,請登入");            
         }
     }
 ?>

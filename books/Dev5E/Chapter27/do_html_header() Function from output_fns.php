@@ -26,4 +26,4 @@ style="float: left; padding-right: 6px;" />
   if($title) {
     do_html_heading($title);
   }
-}
+?>

@@ -6,7 +6,9 @@ header("Content-type: application/json");
 date_default_timezone_set('UTC');
 
 //connect to database
-$db = mysqli_connect('localhost', 'your_user', 'your_password', 'chat');
+// $db = mysqli_connect('localhost', 'your_user', 'your_password', 'chat');
+$db = mysqli_connect('localhost', 'root', '', 'chat');
+
 
 if (mysqli_connect_errno()) {
    echo '<p>Error: Could not connect to database.<br/>
