@@ -3,17 +3,9 @@ session_start();
 $tt = strtotime("+6hour");
 $tt2 = date("Y-m-d H:i:s",$tt);
 
-$link =mysqli_connect("localhost","root","","php2018_06");
-mysqli_query($link , 'SET NAMES UTF8'); 
-
-$id = "bz";
 if(empty($_SESSION["talk_no"])){
   $tt3 = date("YmdHis",$tt);
   $_SESSION["talk_no"] = $tt3;
-}
-if(!empty($_POST["my_talk"])){
-  $sql = "insert into board_log value (null,'".$id."','".$_POST["my_talk"]."','".$_SESSION["talk_no"]."','".$tt2."','127.0.0.1')";
-  mysqli_query($link , $sql);
 }
 ?>
 <!DOCTYPE>
@@ -56,11 +48,9 @@ if(!empty($_POST["my_talk"])){
   <body>
     <div id="all_talk_back"></div>
     <div id="all_talk"></div>
-  <form method="post">
     <div id="intpu_talk">
-      <input name="my_talk">　<input type ="submit" value="說話">
+      <input id="my_talk">　<input type ="button" value="說話" onclick="del_log()">
     </div>
-  </form>
   </body>
 </html>
 <!--
@@ -84,11 +74,28 @@ function now_load(){
     now_load();
     $.post("board_read_log_api.php",{},function(wha){
       document.getElementById("all_talk").innerHTML = wha;
+      no_load();
     });
-    no_load();
-  },2000);   //1000=1秒
-} 
-
+  },3000);   //1000=1秒
+}
 now_load();
+var nodclick = 1; 
+function del_log(){
+  if(nodclick == 1){
+    nodclick = 2;
 
+    my_talk = document.getElementById("my_talk").value;
+    if(my_talk.length >  0){
+      $.post("board_add_log_api.php",{my_talk},function(){
+        document.getElementById("my_talk").value="";
+        $("#all_talk_back").show();
+      });
+    }else{
+      alert("請輸入內容");
+    }
+    nodclick = 1;
+  }else{
+    alert("請不要連續點擊");
+  }
+}
 </SCRIPT>
