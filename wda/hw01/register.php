@@ -43,7 +43,7 @@
         </form>
     </main>
     <!-- _________________________________________________ -->
-<?php
+<?php    
     include("_footer.php");
     if (isset($_POST['submit']))
     {
